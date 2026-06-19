@@ -9,7 +9,7 @@ const T = {
   card: '#fafaf8',
   ink: '#1c1a17',
   inkSoft: '#5a544c',
-  inkMute: '#80796f',
+  inkMute: '#777065',
   rule: '#e6e4df',
   // Accent palette — muted, AA on white (≥4.5:1 for text-size body)
   c1: '#1f3a5f', // deep blue
@@ -83,7 +83,11 @@ function Frame({ width, height }) {
   // Restore view on browser back/forward (and manual hash edits).
   React.useEffect(() => {
     const onPop = () => {
-      const st = parseHash(window.location.hash);
+      const h = window.location.hash;
+      // Ignore non-route hashes (e.g. the skip-link target #p-scroll) so they
+      // move focus without resetting the view.
+      if (h && !h.startsWith('#/')) return;
+      const st = parseHash(h);
       setPage(st.page || 'home');
       if (st.skillKey) setSkillKey(st.skillKey);
       if (st.productKey) setProductKey(st.productKey);
@@ -117,7 +121,7 @@ function Frame({ width, height }) {
       display: 'flex', flexDirection: 'column',
     }}>
       <Header page={page} go={go} ctx={ctx} />
-      <div id="p-scroll" style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden' }}>
+      <div id="p-scroll" tabIndex={-1} style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', outline: 'none' }}>
         {page === 'home' && <Home go={go} ctx={ctx} />}
         {page === 'skills' && <SkillsIndex go={go} ctx={ctx} />}
         {page === 'skill-detail' && <SkillDetail go={go} ctx={ctx} skillKey={skillKey} />}
