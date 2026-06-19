@@ -121,7 +121,7 @@ function Frame({ width, height }) {
       display: 'flex', flexDirection: 'column',
     }}>
       <Header page={page} go={go} ctx={ctx} />
-      <div id="p-scroll" tabIndex={-1} style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', outline: 'none' }}>
+      <div id="p-scroll" tabIndex={-1} style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden' }}>
         {page === 'home' && <Home go={go} ctx={ctx} />}
         {page === 'skills' && <SkillsIndex go={go} ctx={ctx} />}
         {page === 'skill-detail' && <SkillDetail go={go} ctx={ctx} skillKey={skillKey} />}
