@@ -2024,7 +2024,13 @@ function RelevantProductCard({ ctx, go, image, alt, title, description, citation
         {links && links.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {links.map((l, i) => (
-              l.internal ? (
+              l.disabled ? (
+                <span key={i} style={{
+                  fontFamily: T.sans, fontSize: 13, fontWeight: 500, color: T.inkSoft,
+                  background: 'transparent', border: `1px solid ${T.rule}`, borderRadius: 999,
+                  padding: '8px 14px', minHeight: 36, display: 'inline-flex', alignItems: 'center',
+                }}>{l.label}</span>
+              ) : l.internal ? (
                 <button key={i} onClick={() => go(l.internal.page, l.internal.key)}
                   style={skillCardLink(edge)}>
                   {l.label} <span aria-hidden="true" style={{ marginLeft: 4 }}>→</span>
@@ -3325,11 +3331,13 @@ function AiToolsDetail({ go, ctx }) {
             description="A RAG-enabled chatbot on the Active Implementation Hub (implementation.fpg.unc.edu) that helps implementation-science practitioners navigate years of accumulated resources. Built in Microsoft Copilot Studio. Shipped, with positive informal user feedback."
             links={[{ label: 'Go to project', url: 'https://implementation.fpg.unc.edu/' }]} />
           <RelevantProductCard ctx={ctx} go={go} edge={T.c2} surface={T.s2}
-            title="Work Together NC / IDD employment chatbot"
-            description="A RAG-enabled assistant helping adults with intellectual and developmental disabilities find employment and on-the-job support resources; refined through iterative user testing." />
+            title="Work Together NC / IDD Employment Chatbot"
+            description="A retrieval-augmented (RAG) chatbot that helps adults with intellectual and developmental disabilities find and make sense of employment and daily life resources. It answers plain-language questions against a curated, vetted set of resources and meets them at their moment of need. It was designed for accessibility from the start for an audience that conventional resource directories routinely underserve, and refined through iterative testing with real users. Developed under the Work Together NC initiative to expand competitive integrated employment."
+            links={[{ label: 'Coming soon!', disabled: true }]} />
           <RelevantProductCard ctx={ctx} go={go} edge={T.c3} surface={T.s3}
             title="AI Accommodations Coach"
-            description="A conversational coach that helps users work through workplace-accommodation conversations and surfaces recommendations. Product owner across conversation design, data-source curation with SMEs, formative research (surveys complete; focus groups pending), multi-audience UX (workers with disabilities and supervisors), and vendor oversight including model fine-tuning. In active development; no public link." />
+            description="A conversational AI coach to guide practiced conversations about workplace accommodation surfaces tailored advice against defined criteria. It is built for two distinct audiences: workers with disabilities and supervisors. As product owner, I lead it end to end: discovery, conversation and dialogue design, curation of vetted knowledge sources with subject-matter experts, UX designed separately for each audience, and formative research to drive iterative pivots. I direct an external vendor's work on technical development. Currently in discovery."
+            links={[{ label: 'Coming soon!', disabled: true }]} />
         </div>
       </section>
 
