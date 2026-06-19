@@ -25,11 +25,48 @@ const T = {
   display: '"Instrument Serif", "GT Sectra", "Tiempos Headline", Georgia, serif',
 };
 
+// ─── Hash routing helpers (URL sync only; no layout impact) ───
+function buildHash(s) {
+  switch (s.page) {
+    case 'skills': return '#/skills';
+    case 'skill-detail': return '#/skills/' + s.skillKey;
+    case 'products': return (s.productView && s.productView !== 'index') ? '#/projects/' + s.productView : '#/projects';
+    case 'detail': return '#/project/' + s.productKey;
+    case 'pubs': return '#/publications';
+    case 'cv': return '#/experience';
+    case 'home':
+    default: return '#/';
+  }
+}
+
+function parseHash(hash) {
+  const raw = (hash || '').replace(/^#\/?/, '').replace(/\/+$/, '');
+  const parts = raw.split('/').filter(Boolean);
+  if (parts.length === 0) return { page: 'home' };
+  const seg = parts[0], sub = parts[1];
+  if (seg === 'skills') {
+    if (sub && SKILLS.some((k) => k.key === sub)) return { page: 'skill-detail', skillKey: sub };
+    return { page: 'skills' };
+  }
+  if (seg === 'projects') {
+    if (sub && PRODUCT_GROUPS.some((g) => g.id === sub)) return { page: 'products', productView: sub };
+    return { page: 'products', productView: 'index' };
+  }
+  if (seg === 'project') {
+    if (sub && PRODUCTS.some((p) => p.key === sub)) return { page: 'detail', productKey: sub };
+    return { page: 'products', productView: 'index' };
+  }
+  if (seg === 'publications') return { page: 'pubs' };
+  if (seg === 'experience') return { page: 'cv' };
+  return { page: 'home' };
+}
+
 function Frame({ width, height }) {
-  const [page, setPage] = React.useState('home');
-  const [productKey, setProductKey] = React.useState('bridging');
-  const [productView, setProductView] = React.useState('index');
-  const [skillKey, setSkillKey] = React.useState('kt');
+  const initial = parseHash(typeof window !== 'undefined' ? window.location.hash : '');
+  const [page, setPage] = React.useState(initial.page || 'home');
+  const [productKey, setProductKey] = React.useState(initial.productKey || 'bridging');
+  const [productView, setProductView] = React.useState(initial.productView || 'index');
+  const [skillKey, setSkillKey] = React.useState(initial.skillKey || 'kt');
   const isMobile = width < 760;
 
   const go = (p, key) => {
@@ -42,6 +79,34 @@ function Frame({ width, height }) {
       if (el) el.scrollTop = 0;
     });
   };
+
+  // Restore view on browser back/forward (and manual hash edits).
+  React.useEffect(() => {
+    const onPop = () => {
+      const st = parseHash(window.location.hash);
+      setPage(st.page || 'home');
+      if (st.skillKey) setSkillKey(st.skillKey);
+      if (st.productKey) setProductKey(st.productKey);
+      setProductView(st.productView || 'index');
+    };
+    window.addEventListener('popstate', onPop);
+    window.addEventListener('hashchange', onPop);
+    return () => {
+      window.removeEventListener('popstate', onPop);
+      window.removeEventListener('hashchange', onPop);
+    };
+  }, []);
+
+  // Keep the URL hash in sync with the current view.
+  const didMount = React.useRef(false);
+  React.useEffect(() => {
+    const h = buildHash({ page, skillKey, productKey, productView });
+    if (window.location.hash !== h) {
+      if (!didMount.current) window.history.replaceState(null, '', h);
+      else window.history.pushState(null, '', h);
+    }
+    didMount.current = true;
+  }, [page, skillKey, productKey, productView]);
 
   const ctx = { isMobile, pad: isMobile ? 20 : 64 };
 
