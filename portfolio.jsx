@@ -823,7 +823,7 @@ function CprtDetail({ go, ctx }) {
             padding: '12px 0', borderBottom: `1px solid ${T.rule}`,
             fontFamily: T.sans, fontSize: 14, lineHeight: 1.55, color: T.ink, textWrap: 'pretty',
           }}>
-            <strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development.</em>{' '}
+            <strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development, 74,</em> 1063-1114.{' '}
             <a href="https://doi.org/10.1007/s11423-026-10590-6"
               style={{ color: T.c1, textDecoration: 'none', borderBottom: `1px solid ${T.c1}`, paddingBottom: 1, wordBreak: 'break-word' }}>
               https://doi.org/10.1007/s11423-026-10590-6
@@ -1628,7 +1628,7 @@ function KTDetail({ go, ctx }) {
 
       <SkillPubsSection ctx={ctx}>
         <CitationItem>
-          <strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development.</em>{' '}
+          <strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development, 74,</em> 1063-1114.{' '}
           <a href="https://doi.org/10.1007/s11423-026-10590-6" target="_blank" rel="noopener noreferrer" style={citeLink(T.c1)}>View ↗</a>
         </CitationItem>
         <CitationItem>
@@ -1688,7 +1688,7 @@ function ProductDevDetail({ go, ctx }) {
 
       <SkillPubsSection ctx={ctx}>
         <CitationItem>
-          <strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development.</em>{' '}
+          <strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development, 74,</em> 1063-1114.{' '}
           <a href="https://doi.org/10.1007/s11423-026-10590-6"
             target="_blank" rel="noopener noreferrer" style={citeLink(T.c2)}>View ↗</a>
           {' '}
