@@ -2070,7 +2070,7 @@ function skillCardLink(edge) {
 // contextual labels rather than raw URLs to stay on-brand.
 const PUB_WRITINGS = [
   {
-    body: <><strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (Advance online publication: January 26, 2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development.</em></>,
+    body: <><strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development, 74,</em> 1063-1114.</>,
     link: { label: 'DOI', url: 'https://doi.org/10.1007/s11423-026-10590-6' },
     year: 2026,
   },
