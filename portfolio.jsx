@@ -1441,7 +1441,7 @@ const SKILLS = [
   { key: 'kt',       n: '2a', label: 'Leadership, Systems, & Strategy',           surface: T.s1, edge: T.c1, image: 'assets/knowledge-translation.png' },
   { key: 'product',  n: '2b', label: 'Design & Development',             surface: T.s2, edge: T.c2, image: 'assets/scildd-process.png' },
   { key: 'research', n: '2c', label: 'Behavioral Science',                surface: T.s3, edge: T.c3, image: 'assets/behavioral-science.png', tileImage: 'assets/behavioral-science-head.png', tileCover: true, tilePosition: 'center top', blurb: 'I design for behavior change: what people do, not just what they know. I look past surface behavior to its real drivers; design for the ways that people develop, relate, and change; and measure the shift with validated scales, pre/post gains, and mixed methods.' },
-  { key: 'ai',       n: '2d', label: 'AI Innovation & Implementation',  surface: T.s4, edge: T.c4, image: 'assets/icons/ai-tile.png', frameAspect: '4 / 3', objectFit: 'contain', blurb: "I move AI from curiosity to working tools. I've shipped RAG-enabled assistants to live, federally funded research sites, and I own AI products end to end: conversation design, data curation with experts, model selection, testing, and responsible deployment.", pubs: [
+  { key: 'ai',       n: '2d', label: 'AI Innovation & Implementation',  surface: T.s4, edge: T.c4, image: 'assets/icons/ai-tile.png', frameAspect: '1800 / 1150', objectFit: 'contain', blurb: "I move AI from curiosity to working tools. I've shipped RAG-enabled assistants to live, federally funded research sites, and I own AI products end to end: conversation design, data curation with experts, model selection, testing, and responsible deployment.", pubs: [
     { html: `<strong>Morgan, W.</strong>, &amp; Mercier, S. (2025, November 13). <em>Build-a-Bot Workshop: Create Your Own AI-Powered Chatbot.</em> Presented at DevLearn, Las Vegas, NV.` },
     { invited: true, html: `Foster, J., <strong>Morgan, W.</strong>, &amp; Marles, C. (2026, April 28). <em>From Curiosity to Confidence: Building Your AI Roadmap in Learning &amp; Development.</em> Presented at the Learning Trends &amp; Innovations Special Interest Group, Association for Talent Development Research Triangle Area Chapter (Virtual).` },
   ], projects: [
@@ -1553,7 +1553,7 @@ function SkillDetail({ go, ctx, skillKey }) {
 }
 
 // ─── Shared skill-page hero (image + title + description) ────
-function SkillHero({ ctx, image, alt, title, edge, surface, children, frameAspect, objectPosition, objectFit }) {
+function SkillHero({ ctx, image, alt, title, edge, surface, children, frameAspect, objectPosition, objectFit, figureMaxWidth }) {
   return (
     <section style={{
       paddingBottom: ctx.isMobile ? 28 : 36,
@@ -1562,7 +1562,7 @@ function SkillHero({ ctx, image, alt, title, edge, surface, children, frameAspec
       gap: ctx.isMobile ? 24 : 48,
       alignItems: 'start',
     }}>
-      <figure style={{ margin: 0 }}>
+      <figure style={{ margin: 0, maxWidth: (!ctx.isMobile && figureMaxWidth) ? figureMaxWidth : 'none', width: '100%' }}>
         <div style={{ position: 'relative' }}>
           <div aria-hidden="true" style={{
             position: 'absolute', inset: 0, transform: 'translate(10px, 10px)',
@@ -1680,6 +1680,7 @@ function ProductDevDetail({ go, ctx }) {
         image="assets/scildd-process.png"
         alt="SCILDD process diagram: Needs Analysis → Strategy → Design → Development → Implementation & Evaluation, framed by the three phases Proof of Concept, Proof of Product, Proof of Application"
         title="Design & Development"
+        frameAspect="1800 / 1150" objectFit="contain"
         edge={T.c2} surface={T.s2}>
         <p style={{ fontFamily: T.sans, fontSize: 18, lineHeight: 1.55, color: T.ink, margin: 0, textWrap: 'pretty' }}>
           I lead end-to-end development from discovery/needs analysis through co-created, iterative prototyping, to valid and meaningful evaluation. I don't just follow the latest process; I wrote it.
@@ -3066,7 +3067,7 @@ function DataDashboardsDetail({ go, ctx }) {
       <section style={{
         paddingBottom: ctx.isMobile ? 40 : 56,
         display: 'grid',
-        gridTemplateColumns: ctx.isMobile ? '1fr' : 'minmax(0, 480px) 1fr',
+        gridTemplateColumns: ctx.isMobile ? '1fr' : 'minmax(0, 620px) 1fr',
         gap: ctx.isMobile ? 24 : 48,
         alignItems: 'start',
       }}>
@@ -3240,16 +3241,16 @@ function AiToolsDetail({ go, ctx }) {
       <section style={{
         paddingBottom: ctx.isMobile ? 40 : 56,
         display: 'grid',
-        gridTemplateColumns: ctx.isMobile ? '1fr' : '1.4fr 1fr',
+        gridTemplateColumns: ctx.isMobile ? '1fr' : '1.3fr 1fr',
         gap: ctx.isMobile ? 24 : 48,
         alignItems: 'start',
       }}>
         <figure style={{ margin: 0 }}>
           <div style={{ position: 'relative' }}>
             <div aria-hidden="true" style={{ position: 'absolute', inset: 0, transform: 'translate(10px, 10px)', background: T.c4, borderRadius: 4 }} />
-            <div style={{ position: 'relative', background: '#fff', borderRadius: 4, overflow: 'hidden', outline: `1px solid ${T.rule}` }}>
+            <div style={{ position: 'relative', background: '#fff', borderRadius: 4, overflow: 'hidden', outline: `1px solid ${T.rule}`, aspectRatio: '1800 / 1150', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src="assets/aitools-rag.png" alt="Retrieval Augmented Generation (RAG) flow: a user's question becomes a full prompt, the system runs a retrieval query against a knowledge base of documents, the retrieved texts augment the prompt, the AI generates a grounded answer, and the response returns to the user"
-                style={{ width: '100%', display: 'block' }} />
+                style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
             </div>
           </div>
           <figcaption style={{ marginTop: 18, fontFamily: T.sans, fontSize: 12, color: T.inkMute, letterSpacing: 0.3, textTransform: 'uppercase', fontWeight: 500 }}>
