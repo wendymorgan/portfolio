@@ -829,9 +829,9 @@ function CprtDetail({ go, ctx }) {
               https://doi.org/10.1007/s11423-026-10590-6
             </a>
             {' '}[For complimentary, full access:{' '}
-            <a href="https://rdcu.be/e0Oui"
+            <a href="https://rdcu.be/e0Ouj"
               style={{ color: T.c1, fontWeight: 500, textDecoration: 'none', borderBottom: `1px solid ${T.c1}`, paddingBottom: 1 }}>
-              https://rdcu.be/e0Oui
+              https://rdcu.be/e0Ouj
             </a>]
           </li>
           <li style={{
@@ -1692,7 +1692,7 @@ function ProductDevDetail({ go, ctx }) {
           <a href="https://doi.org/10.1007/s11423-026-10590-6"
             target="_blank" rel="noopener noreferrer" style={citeLink(T.c2)}>View ↗</a>
           {' '}
-          <a href="https://rdcu.be/e0Oui" target="_blank" rel="noopener noreferrer" style={citeLink(T.c2)}>Free full text ↗</a>
+          <a href="https://rdcu.be/e0Ouj" target="_blank" rel="noopener noreferrer" style={citeLink(T.c2)}>Free full text ↗</a>
         </CitationItem>
         <CitationItem>
           <strong style={{ fontWeight: 600 }}>Morgan, W.</strong> (2026, November). <em>Designing a Neuroeducation Curriculum for Juvenile Justice Professionals: A SCILDD Process Case Illustration.</em> Accepted as concurrent presentation to the Association for Educational Communications and Technology (AECT) International Convention, Chicago, IL.
