@@ -1508,7 +1508,7 @@ function SkillTile({ s, go, ctx }) {
           borderBottom: ctx.isMobile ? `1px solid ${T.rule}` : 'none',
           minHeight: ctx.isMobile ? 200 : 'auto',
         }}>
-          <img src={s.tileImage || s.image} alt="" loading="lazy"
+          <img src={s.tileImage || s.image} alt="" loading="eager" decoding="async"
             style={s.tileCover
               ? { width: '100%', height: '100%', objectFit: 'cover', objectPosition: s.tilePosition || 'center', display: 'block' }
               : { maxWidth: '100%', maxHeight: ctx.isMobile ? 200 : 260, objectFit: 'contain' }} />

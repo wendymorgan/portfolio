@@ -21,8 +21,10 @@
   #p-scroll::-webkit-scrollbar { width: 8px; }
   #p-scroll::-webkit-scrollbar-thumb { background: rgba(28,26,23,0.18); border-radius: 4px; }
 
-  /* Visible feedback when the skip link moves focus into the main content. */
-  #p-scroll:focus-visible { outline: 2px solid #1f3a5f; outline-offset: -3px; border-radius: 0; }
+  /* Visible feedback when the skip link moves focus into the main content.
+     Uses :focus (not :focus-visible) because focus arrives via a #fragment
+     jump, which browsers won't treat as focus-visible. */
+  #p-scroll:focus { outline: 2px solid #1f3a5f; outline-offset: -3px; border-radius: 0; }
 
   .skip-link {
     position: absolute; left: -9999px; top: 0;
@@ -31,6 +33,12 @@
     font-size: 14px;
   }
   .skip-link:focus { left: 16px; top: 16px; }
+
+  /* Gentle fade-in so images don't "plop" in once decoded. Space is already
+     reserved by aspect-ratio frames, so this only smooths the paint. */
+  #root img { opacity: 0; transition: opacity .45s ease; }
+  #root img.img-loaded { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { #root img { transition: none; } }
 </style>
 </head>
 <body style="background-color: #ffffff;">
@@ -44,6 +52,31 @@
 
 <script src="pubdata.js"></script>
 <script type="text/babel" src="portfolio.jsx" data-presets="react"></script>
+
+<script>
+  // Reveal images with a fade once they finish loading. Uses capture-phase
+  // 'load' (it doesn't bubble) plus a sweep for already-cached images, and a
+  // safety net so nothing stays hidden if a load event is ever missed.
+  (function () {
+    function reveal(img) { img.classList.add('img-loaded'); }
+    document.addEventListener('load', function (e) {
+      if (e.target && e.target.tagName === 'IMG') reveal(e.target);
+    }, true);
+    document.addEventListener('error', function (e) {
+      if (e.target && e.target.tagName === 'IMG') reveal(e.target);
+    }, true);
+    function sweep() {
+      document.querySelectorAll('#root img').forEach(function (img) {
+        if (img.complete) reveal(img);
+      });
+    }
+    var iv = setInterval(sweep, 200);
+    setTimeout(function () {
+      clearInterval(iv);
+      document.querySelectorAll('#root img').forEach(reveal); // safety net
+    }, 5000);
+  })();
+</script>
 
 <script type="text/babel" data-presets="react">
   function Mount() {
