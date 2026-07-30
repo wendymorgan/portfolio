@@ -379,7 +379,7 @@ const PRODUCTS = [
   { key: 'afirm', group: 'impact', title: 'AFIRM for Paras', surface: T.s2, edge: T.c2, image: 'assets/afirm-screenshot.png', imageFit: 'contain' },
   { key: 'pbis', group: 'impact', title: 'Michigan PBIS Implementation', surface: T.s3, edge: T.c3, image: 'assets/pbis-tile.png', imageFit: 'contain' },
   { key: 'dashboards', group: 'innovation', title: 'Data Dashboards for Targeted Action', surface: T.s2, edge: T.c2, image: 'assets/dashboards-tile.png', imageFit: 'contain' },
-  { key: 'aitools', group: 'innovation', title: 'AI Tools & Enablement', surface: T.s4, edge: T.c4, image: 'assets/aitools-tile.png', imageFit: 'contain' },
+  { key: 'aitools', group: 'innovation', title: 'AI Tools & Enablement', surface: T.s4, edge: T.c4, image: 'assets/wtnc-assistant.png', imageFit: 'contain' },
 ];
 
 const PRODUCT_GROUPS = [
@@ -1445,7 +1445,7 @@ const SKILLS = [
     { html: `<strong>Morgan, W.</strong>, &amp; Mercier, S. (2025, November 13). <em>Build-a-Bot Workshop: Create Your Own AI-Powered Chatbot.</em> Presented at DevLearn, Las Vegas, NV.` },
     { invited: true, html: `Foster, J., <strong>Morgan, W.</strong>, &amp; Marles, C. (2026, April 28). <em>From Curiosity to Confidence: Building Your AI Roadmap in Learning &amp; Development.</em> Presented at the Learning Trends &amp; Innovations Special Interest Group, Association for Talent Development Research Triangle Area Chapter (Virtual).` },
   ], projects: [
-    { key: 'aitools', image: 'assets/aitools-tile.png', title: 'AI Tools & Enablement', edge: T.c4, surface: T.s4, description: "I build AI-enabled learning and performance-support tools that ship to real users, and I build my team's capability to design and deploy them." },
+    { key: 'aitools', image: 'assets/wtnc-assistant.png', title: 'AI Tools & Enablement', edge: T.c4, surface: T.s4, description: "I build AI-enabled learning and performance-support tools that ship to real users, and I build my team's capability to design and deploy them." },
   ] },
 ];
 
@@ -1654,7 +1654,7 @@ function KTDetail({ go, ctx }) {
         <div style={{ display: 'grid', gap: ctx.isMobile ? 16 : 20 }}>
           {[
             { key: 'dashboards', image: 'assets/dashboards-tile.png', title: 'Data Dashboards for Targeted Action', edge: T.c2, surface: T.s2, description: 'A repeatable capability: capture meaningful learner behavior data and turn it into an at-a-glance picture that lets coaches, instructors, and leadership teams target their follow-up. Applied across several projects.' },
-            { key: 'aitools', image: 'assets/aitools-tile.png', title: 'AI Tools & Enablement', edge: T.c4, surface: T.s4, description: "I build AI-enabled learning and performance-support tools that ship to real users, and I build my team's capability to design and deploy them." },
+            { key: 'aitools', image: 'assets/wtnc-assistant.png', title: 'AI Tools & Enablement', edge: T.c4, surface: T.s4, description: "I build AI-enabled learning and performance-support tools that ship to real users, and I build my team's capability to design and deploy them." },
             { key: 'cprt', image: 'assets/cprt-screenshot.png', title: 'CPRT Implementation Product Suite', edge: T.c1, surface: T.s1, description: 'Blended learning product suite to support teachers to use and appropriately adapt the Classroom Pivotal Response Teaching (CPRT) autism intervention.' },
             { key: 'bridging', image: 'assets/bridging-workshop.jpg', title: 'Bridging Neuroscience and Juvenile Justice', edge: T.c4, surface: T.s4, description: 'Blended curriculum pilot translating neuroscience for use during workflow decision-making among juvenile justice professionals.' },
             { key: 'afirm', image: 'assets/afirm-screenshot.png', title: 'AFIRM for Paras', edge: T.c2, surface: T.s2, description: 'Universally available, hands-on online professional development that trains paraprofessionals to implement evidence-based practices with children with autism.' },
@@ -3336,9 +3336,10 @@ function AiToolsDetail({ go, ctx }) {
             description="A RAG-enabled chatbot on the Active Implementation Hub (implementation.fpg.unc.edu) that helps implementation-science practitioners navigate years of accumulated resources. Built in Microsoft Copilot Studio. Shipped, with positive informal user feedback."
             links={[{ label: 'Go to project', url: 'https://implementation.fpg.unc.edu/' }]} />
           <RelevantProductCard ctx={ctx} go={go} edge={T.c2} surface={T.s2}
-            title="Work Together NC / IDD Employment Chatbot"
+            title="WTNC Website Assistant"
+            image="assets/wtnc-assistant.png" alt="The WTNC Website Assistant chat panel, with an intro from the assistant, crisis-line guidance, a Start A New Chat button, and three suggested questions"
             description="A retrieval-augmented (RAG) chatbot that helps adults with intellectual and developmental disabilities find and make sense of employment and daily life resources. It answers plain-language questions against a curated, vetted set of resources and meets them at their moment of need. It was designed for accessibility from the start for an audience that conventional resource directories routinely underserve, and refined through iterative testing with real users. Developed under the Work Together NC initiative to expand competitive integrated employment."
-            links={[{ label: 'Coming soon!', disabled: true }]} />
+            links={[{ label: 'Go to project', url: 'https://worktogethernc.com/' }]} />
           <RelevantProductCard ctx={ctx} go={go} edge={T.c3} surface={T.s3}
             title="AI Accommodations Coach"
             description="A conversational AI coach to guide practiced conversations about workplace accommodation surfaces tailored advice against defined criteria. It is built for two distinct audiences: workers with disabilities and supervisors. As product owner, I lead it end to end: discovery, conversation and dialogue design, curation of vetted knowledge sources with subject-matter experts, UX designed separately for each audience, and formative research to drive iterative pivots. I direct an external vendor's work on technical development. Currently in discovery."
