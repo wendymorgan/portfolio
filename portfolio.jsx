@@ -1630,6 +1630,8 @@ function KTDetail({ go, ctx }) {
         <CitationItem>
           <strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development, 74,</em> 1063-1114.{' '}
           <a href="https://doi.org/10.1007/s11423-026-10590-6" target="_blank" rel="noopener noreferrer" style={citeLink(T.c1)}>View ↗</a>
+          {' '}
+          <a href="https://rdcu.be/e0Ouj" target="_blank" rel="noopener noreferrer" style={citeLink(T.c1)}>Free full text ↗</a>
         </CitationItem>
         <CitationItem>
           <strong style={{ fontWeight: 600 }}>Morgan, W.</strong>, (2026, May 27). <em>Developing the Implementation Workforce: Professional Development Structures That Drive System Alignment.</em> Presented at the Society for Prevention Research (SPR) 34th Annual Meeting: New Horizons in Prevention Science: Multilevel Interventions for Systemic Challenges, Washington, DC.
@@ -2073,6 +2075,7 @@ const PUB_WRITINGS = [
   {
     body: <><strong style={{ fontWeight: 600 }}>Morgan, W.M.</strong>, Sam, A., Suhrheinrich, J., &amp; Chan, J. (2026). An initial application of SCILDD: A Strategic, Co-created, and Iterative Learning Design and Development process. <em>Educational Technology Research and Development, 74,</em> 1063-1114.</>,
     link: { label: 'DOI', url: 'https://doi.org/10.1007/s11423-026-10590-6' },
+    link2: { label: 'Free full text', url: 'https://rdcu.be/e0Ouj' },
     year: 2026,
   },
   {
@@ -2305,15 +2308,22 @@ function PubItem({ it, edge, ctx, last }) {
         {it.html ? <span dangerouslySetInnerHTML={{ __html: it.html }} /> : it.body}
       </div>
       {it.link ? (
-        <a href={it.link.url} target="_blank" rel="noopener noreferrer"
-          style={{
-            fontFamily: T.sans, fontSize: 13, fontWeight: 500, color: '#fff',
-            background: edge, borderRadius: 999, padding: '7px 14px',
-            textDecoration: 'none', whiteSpace: 'nowrap', minHeight: 34,
-            display: 'inline-flex', alignItems: 'center', justifySelf: ctx.isMobile ? 'start' : 'end',
-          }}>
-          {it.link.label} <span aria-hidden="true" style={{ marginLeft: 4 }}>↗</span>
-        </a>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifySelf: ctx.isMobile ? 'start' : 'end' }}>
+          {[it.link, it.link2].filter(Boolean).map((l, li) => (
+            <a key={li} href={l.url} target="_blank" rel="noopener noreferrer"
+              style={{
+                fontFamily: T.sans, fontSize: 13, fontWeight: 500,
+                color: li === 0 ? '#fff' : edge,
+                background: li === 0 ? edge : 'transparent',
+                border: li === 0 ? 'none' : `1px solid ${edge}`,
+                borderRadius: 999, padding: '7px 14px',
+                textDecoration: 'none', whiteSpace: 'nowrap', minHeight: 34,
+                display: 'inline-flex', alignItems: 'center',
+              }}>
+              {l.label} <span aria-hidden="true" style={{ marginLeft: 4 }}>↗</span>
+            </a>
+          ))}
+        </div>
       ) : it.invited ? (
         <span style={{
           fontFamily: T.sans, fontSize: 11, fontWeight: 600, color: edge,
