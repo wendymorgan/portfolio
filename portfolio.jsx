@@ -278,7 +278,7 @@ function Home({ go, ctx }) {
             lineHeight: 1.08, letterSpacing: -1, fontWeight: 400,
             margin: 0, color: T.ink, textWrap: 'pretty',
           }}>
-            Leading learning and behavior-change initiatives that measurably shift practice, strategy through evaluation.
+            I design and test interventions (tools, programs, and processes) that move expert knowledge into frontline practice.
           </h1>
           <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: '10px 14px' }}>
             {SKILLS.map((s) => (
@@ -2887,9 +2887,9 @@ function MichiganPbisDetail({ go, ctx }) {
           </p>
           <div style={{ display: 'grid', gap: 12 }}>
             {[
-              { label: 'Choose-Your-Own-PBIS Adventure: Featuring the Cafeteria!', url: 'https://modules.fpg.unc.edu/MiMTSS/' },
-              { label: 'Student Experience of PBIS: Onsite Support Videos', url: 'https://modules.fpg.unc.edu/MiMTSSCoach/daythree/' },
-              { label: 'Choose Your Own Coaching Adventure', url: 'https://modules.fpg.unc.edu/MiMTSSCoach/CoachingCYOA/' },
+              { label: 'Choose-Your-Own-PBIS Adventure: Featuring the Cafeteria!', url: 'https://wendymorgan.github.io/mimtss/cafeteria/story.html' },
+              { label: 'Student Experience of PBIS: Onsite Support Videos', url: 'https://wendymorgan.github.io/mimtss/videos/dayone/' },
+              { label: 'Choose Your Own Coaching Adventure', url: 'https://wendymorgan.github.io/mimtss/coach/story.html' },
             ].map((it) => (
               <a key={it.label} href={it.url} target="_blank" rel="noopener noreferrer"
                 style={{
