@@ -3347,8 +3347,8 @@ function AiToolsDetail({ go, ctx }) {
             links={[{ label: 'Go to project', url: 'https://implementation.fpg.unc.edu/' }]} />
           <RelevantProductCard ctx={ctx} go={go} edge={T.c2} surface={T.s2}
             title="WTNC Website Assistant"
-            image="assets/wtnc-assistant.png" alt="The WTNC Website Assistant chat panel, with an intro from the assistant, crisis-line guidance, a Start A New Chat button, and three suggested questions"
-            description="A retrieval-augmented (RAG) chatbot that helps adults with intellectual and developmental disabilities find and make sense of employment and daily life resources. It answers plain-language questions against a curated, vetted set of resources and meets them at their moment of need. It was designed for accessibility from the start for an audience that conventional resource directories routinely underserve, and refined through iterative testing with real users. Developed under the Work Together NC initiative to expand competitive integrated employment."
+            image="assets/wtnc-assistant-crop.png" alt="The WTNC Website Assistant intro panel: the assistant's robot icon and greeting, a note that it can't handle emergencies, and crisis-line guidance"
+            description="A retrieval-augmented (RAG) chatbot that helps adults with intellectual and developmental disabilities find and make sense of employment and daily life resources. It answers plain-language questions against a curated, vetted set of resources to assist at the moment of need. It was designed for accessibility from the start for an audience that conventional resource directories routinely underserve, and refined through iterative testing with real users. Developed under the Work Together NC initiative to expand competitive integrated employment."
             links={[{ label: 'Go to project', url: 'https://worktogethernc.com/' }]} />
           <RelevantProductCard ctx={ctx} go={go} edge={T.c3} surface={T.s3}
             title="AI Accommodations Coach"
